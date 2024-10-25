@@ -7,6 +7,7 @@ import ReactPaginate from "react-paginate";
 import { GrLinkPrevious, GrLinkNext } from "react-icons/gr";
 import Logo from "/Recipe Finder.jpg";
 import LoadingSpinner from "./LoadingSpinner";
+import Footer from "./Footer";
 
 const App = () => {
   const term = useRecipeStore((state) => state.term);
@@ -88,62 +89,65 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen px-6 py-8 container mx-auto my-5 rounded-2xl from-gray-400 bg-gradient-to-b to-gray-100">
-      <div className="flex justify-center items-center gap-3 py-2">
-        <h1 className="text-3xl font-bold text-center">Recipe</h1>
-        <img
-          src={Logo}
-          alt="Recipe Finder"
-          className="h-20 w-20 rounded border-[1px] border-black"
-        />
-        <h1 className="text-3xl font-bold text-center">Finder</h1>
-      </div>
-
-      {loading ? (
-        <LoadingSpinner />
-      ) : (
-        <div className="flex flex-col lg:flex-row gap-3">
-          <div
-            className={`${
-              recipes.length ? "lg:w-[200px]" : "md:w-[500px]"
-            } mx-auto`}
-          >
-            <SearchForm handleSubmit={handleSubmit} />
-
-            {!recipes.length && formSubmitted && (
-              <p className="text-center text-gray-900 text-2xl mt-10">
-                No recipes found.
-              </p>
-            )}
-          </div>
-
-          <div
-            className={`mx-auto xl:w-[1200px] ${
-              recipes.length ? "" : "hidden"
-            }`}
-          >
-            <Recipes />
-            <ReactPaginate
-              breakLabel="..."
-              nextLabel={<GrLinkNext />}
-              onPageChange={handlePageClick}
-              pageRangeDisplayed={3}
-              pageCount={pageCount}
-              forcePage={currentPage}
-              containerClassName="lg:mx-40 flex justify-center items-center mb-5 gap-[5px] mt-7 md:text-lg rounded border-[1px] border-slate-400 py-2 bg-gray-400"
-              pageLinkClassName="px-2 md:px-4 py-2 rounded-sm hover:bg-gray-700"
-              previousClassName="md:px-4 py-2 rounded-sm hover:bg-gray-700 bg-gray-400"
-              nextClassName="md:px-4 py-2 rounded-sm font-normal hover:bg-gray-700"
-              activeClassName="py-2 rounded-sm font-normal bg-gray-700 text-white"
-              previousLabel={<GrLinkPrevious />}
-              disabledClassName="pointer-events-none"
-              // disabledLinkClassName="text-red-500"
-              renderOnZeroPageCount={null}
-            />
-          </div>
+    <>
+      <div className="min-h-screen px-6 pt-8 container mx-auto my-5 rounded-2xl from-gray-400 bg-gradient-to-b to-gray-100">
+        <div className="flex justify-center items-center gap-3 py-2">
+          <h1 className="text-3xl font-bold text-center">Recipe</h1>
+          <img
+            src={Logo}
+            alt="Recipe Finder"
+            className="h-20 w-20 rounded border-[1px] border-black"
+          />
+          <h1 className="text-3xl font-bold text-center">Finder</h1>
         </div>
-      )}
-    </div>
+
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <div className="flex flex-col lg:flex-row gap-3">
+            <div
+              className={`${
+                recipes.length ? "lg:w-[200px]" : "md:w-[500px]"
+              } mx-auto`}
+            >
+              <SearchForm handleSubmit={handleSubmit} />
+
+              {!recipes.length && formSubmitted && (
+                <p className="text-center text-gray-900 text-2xl mt-10">
+                  No recipes found.
+                </p>
+              )}
+            </div>
+
+            <div
+              className={`mx-auto xl:w-[1200px] ${
+                recipes.length ? "" : "hidden"
+              }`}
+            >
+              <Recipes />
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel={<GrLinkNext />}
+                onPageChange={handlePageClick}
+                pageRangeDisplayed={3}
+                pageCount={pageCount}
+                forcePage={currentPage}
+                containerClassName="lg:mx-40 flex justify-center items-center mb-5 gap-[5px] mt-7 md:text-lg rounded border-[1px] border-slate-400 py-2 bg-gray-400"
+                pageLinkClassName="px-2 md:px-4 py-2 rounded-sm hover:bg-gray-700"
+                previousClassName="md:px-4 py-2 rounded-sm hover:bg-gray-700 bg-gray-400"
+                nextClassName="md:px-4 py-2 rounded-sm font-normal hover:bg-gray-700"
+                activeClassName="py-2 rounded-sm font-normal bg-gray-700 text-white"
+                previousLabel={<GrLinkPrevious />}
+                disabledClassName="pointer-events-none"
+                // disabledLinkClassName="text-red-500"
+                renderOnZeroPageCount={null}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 };
 
