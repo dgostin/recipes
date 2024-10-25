@@ -88,7 +88,7 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-screen px-6 py-8 container mx-auto my-5 rounded-2xl from-sky-600 bg-gradient-to-b to-teal-400">
+    <div className="min-h-screen px-6 py-8 container mx-auto my-5 rounded-2xl from-gray-400 bg-gradient-to-b to-gray-100">
       <div className="flex justify-center items-center gap-3 py-2">
         <h1 className="text-3xl font-bold text-center">Recipe</h1>
         <img
