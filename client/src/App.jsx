@@ -77,7 +77,7 @@ const App = () => {
       );
     } else {
       fetchRecipes();
-      setCurrentPage(0);
+      // setCurrentPage(0);
     }
   };
 

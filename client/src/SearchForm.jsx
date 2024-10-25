@@ -32,6 +32,7 @@ const SearchForm = ({ handleSubmit }) => {
   ];
 
   const setTerm = useRecipeStore((state) => state.setTerm);
+  const term = useRecipeStore((state) => state.term);
   const setSelectedCuisineTypes = useRecipeStore(
     (state) => state.setSelectedCuisineTypes
   );
@@ -61,6 +62,7 @@ const SearchForm = ({ handleSubmit }) => {
         <input
           type="text"
           name="term"
+          value={term}
           onChange={(e) => {
             setFormSubmitted(false);
             setTerm(e.target.value);
